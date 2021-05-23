@@ -1,13 +1,13 @@
-account_sid = "ACf53a8b96c124b4e0173c46dd978f1002"
-auth_token = "c4d0daf534de4a046d059716e83ff5ce"
-ph_no = "+14704129454"
-device_to_contact = "+918076343689"
+account_sid = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"               # Your Twillo Account sid
+auth_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"                      # Your Twillo Account Token
+ph_no = "+XXXXXXXXXX"                                            # From Which you Want to send the message
+device_to_contact = "+XXXXXXXXXXX"                               # To which you want to send the message
 
-api_key = "8704f8e9-3fd0-4b91-b01f-0a3e7d794216"
-device_id = "BOLT13170316"
+api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxx"                          # API key of the bolt device
+device_id = "BOLTXXXXX"                                          # Your Unique Bolt Device ID        
 
-chat_id = "@rivals17"
-telegram_id_api = "bot1734227292:AAEZk327aQKolMAVptX6jaRVDttsJPpXjNg"
+chat_id = "@xxxxxx"                                              # Telegram Channel Unique ID where you want to send the message
+telegram_id_api = "botxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxx"    # Telegram bot API key
 
 
 import json
