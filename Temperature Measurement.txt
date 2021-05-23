@@ -1,0 +1,44 @@
+account_sid = "ACf53a8b96c124b4e0173c46dd978f1002"
+auth_token = "c4d0daf534de4a046d059716e83ff5ce"
+ph_no = "+14704129454"
+device_to_contact = "+918076343689"
+
+api_key = "8704f8e9-3fd0-4b91-b01f-0a3e7d794216"
+device_id = "BOLT13170316"
+
+chat_id = "@rivals17"
+telegram_id_api = "bot1734227292:AAEZk327aQKolMAVptX6jaRVDttsJPpXjNg"
+
+
+import json
+import time
+
+import boltiot
+
+import Information
+
+minimum_limit = 15
+maximum_limit = 20
+
+bolt_connect = boltiot.Bolt(Information.api_key,Information.device_id)
+
+response = bolt_connect.analogRead('A0')
+result = json.loads(response)
+
+sms = boltiot.Sms(Information.account_sid, Information.auth_token, Information.device_to_contact, Information.ph_no)
+
+
+while True:
+
+    response = bolt_connect.analogRead('A0')
+    result = json.loads(response)
+    temperature = int(result['value']) / 10.24
+    print("Current Temperature reading : " + str(temperature) + ' C')
+    try:
+        if temperature > maximum_limit or temperature < minimum_limit :
+            sms.send_sms("Temperature is not suitable please evacuate" + str(temperature) + ' C')
+    except Exception as e:
+        print("Error has occur :")
+        print(e)
+
+    time.sleep(20)
