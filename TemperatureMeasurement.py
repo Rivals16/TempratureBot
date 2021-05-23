@@ -9,6 +9,19 @@ device_id = "BOLTXXXXX"                                          # Your Unique B
 chat_id = "@xxxxxx"                                              # Telegram Channel Unique ID where you want to send the message
 telegram_id_api = "botxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxx"    # Telegram bot API key
 
+def send_telegram_message(message):
+    url = "https://api.telegram.org/" + telegram_id_api + "/sendMessage"
+    print(url)
+    response = requests.request(
+        "POST",
+        url=url,
+        params={
+            "chat_id": chat_id,
+            "text": message
+        }
+    )
+
+    return response
 
 import json
 import time
@@ -36,7 +49,9 @@ while True:
     print("Current Temperature reading : " + str(temperature) + ' C')
     try:
         if temperature > maximum_limit or temperature < minimum_limit :
-            sms.send_sms("Temperature is not suitable please evacuate" + str(temperature) + ' C')
+            message = "Temperature is not suitable please evacuate" + str(temperature) + ' C'
+            sms.send_sms(message)
+            send_telegram_message(message)
     except Exception as e:
         print("Error has occur :")
         print(e)
